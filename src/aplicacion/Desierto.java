@@ -207,4 +207,8 @@ public class Desierto{
             }
     }
   }
+  public  void reiniciar(){
+	  desierto= null;
+	  
+  }
 }

@@ -13,6 +13,14 @@ import aplicacion.*;
 public class DesiertoBlancoGUI extends JFrame{
 	
 	private Desierto desierto=null;
+	private JMenuBar barMenu;
+	private JMenuItem abrir;
+	private JMenuItem guardar;
+	private JMenuItem importar;
+	private JMenuItem exportar;
+	private JMenuItem salir;
+	private JMenuItem nuevo;
+	private JMenu archivo;
 	
 	private JPanel botones;
 	private JScrollPane contenedor;
@@ -65,7 +73,7 @@ public class DesiertoBlancoGUI extends JFrame{
 		getContentPane().add(contenedor,BorderLayout.CENTER);
 		getContentPane().add(botones,BorderLayout.SOUTH);
 		
-		
+		elementosMenu();
 		pack();
 		setSize(Desierto.MAXIMO+100,Desierto.MAXIMO+135);
 		setResizable(false);
@@ -93,9 +101,40 @@ public class DesiertoBlancoGUI extends JFrame{
 			}
 		};  
 		this.addWindowListener(w);
+		nuevo.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					reiniciar();
+				}
+			}
+		);
 		
 	}	
-	
+	public void reiniciar(){
+		foto.reiniciar();
+		
+	}
+	private void elementosMenu(){
+		nuevo =  new JMenuItem("Nuevo");
+		barMenu= new JMenuBar();
+		archivo= new JMenu("Archivo");
+		abrir = new JMenuItem("Abrir");
+		guardar = new JMenuItem("Salvar como");
+		importar = new JMenuItem("Importar");
+		exportar = new JMenuItem("Exportar");
+		salir = new JMenuItem("Salir");
+		barMenu.add(archivo);
+		archivo.add(nuevo);
+		archivo.addSeparator();
+		archivo.add(abrir);
+		archivo.add(guardar);
+		archivo.addSeparator();
+		archivo.add(importar);
+		archivo.add(exportar);
+		archivo.addSeparator();
+		archivo.add(salir);
+		this.setJMenuBar(barMenu);	
+	}	
 	
 	
 	private void moverTodos(){
@@ -145,6 +184,8 @@ public class DesiertoBlancoGUI extends JFrame{
 		DesiertoBlancoGUI gui=new DesiertoBlancoGUI();
 		gui.setVisible(true);
 	}   
+	//Clase FotoDesierto
+	
 	
 	class FotoDesierto extends JComponent {
 		int x,y;
@@ -158,6 +199,10 @@ public class DesiertoBlancoGUI extends JFrame{
 		public void actualice(){
 			desierto=Desierto.demeDesierto();
 			repaint();
+		}
+		public void reiniciar(){
+			desierto.reiniciar();
+			actualice();
 		}
 		
 		public void paintComponent(Graphics g){
