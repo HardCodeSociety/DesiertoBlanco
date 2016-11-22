@@ -73,7 +73,7 @@ public class Desierto{
         elementos.add(new Poblador(this,"susanita",150,80));
         elementos.add(new Poblador(this,"felipito",150,480));
         elementos.add(new Minucioso(this,"harry"));
-        //elementos.add(new Exterminador(this,"Arnold",40,400));
+        elementos.add(new Exterminador(this,"Arnold",40,400));
         //elementos.add(new Exterminador(this,"Rambo",400,100));
         elementos.add(new Mina(this,350,250));
     }  
@@ -208,7 +208,7 @@ public class Desierto{
     }
   }
   public  void reiniciar(){
-	  elementos.clear();
+	elementos.clear();
       algunosElementos();
   }
 }

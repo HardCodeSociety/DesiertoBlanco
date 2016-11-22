@@ -108,8 +108,15 @@ public class DesiertoBlancoGUI extends JFrame{
 				}
 			}
 		);
-		
-	}	
+		salir.addActionListener (
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+						System.exit(0);
+					}
+				}
+			);
+	}
+	
 	public void reiniciar(){
 		foto.reiniciar();
 		
