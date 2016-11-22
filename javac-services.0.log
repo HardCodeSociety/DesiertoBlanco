@@ -95,3 +95,4 @@ org.javacs.NoJavaConfigException: Can't find configuration file for /home/andres
 	at org.javacs.Main.run(Main.java:150)
 	at org.javacs.Main.main(Main.java:69)
 
+INFO	?	main	2016-11-22T03:10:04.898Z	org.javacs.JavaLanguageServer#doLint	Lint [/home/andres/Documentos/LAB06/src/aplicacion/Desierto.java, /home/andres/Documentos/LAB06/src/presentacion/DesiertoBlancoGUI.java]

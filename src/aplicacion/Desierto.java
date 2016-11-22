@@ -210,7 +210,5 @@ public class Desierto{
   public  void reiniciar(){
 	  elementos.clear();
       algunosElementos();
-
-	  
   }
 }
