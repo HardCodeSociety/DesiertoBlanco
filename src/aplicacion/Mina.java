@@ -14,7 +14,6 @@ public class Mina implements Elemento
     private int posX;
     private int posY;
     private boolean crearMal;
-    private int a;
     /**
      * Este es el metodo constructor de esta clase
      */
@@ -70,5 +69,5 @@ public class Mina implements Elemento
     /**
      * @return Retorna el valor a del elemento
      */
-    public int getA(){return a;}
+    //public int getA()return a;}
     }

@@ -3,7 +3,7 @@ import java.util.*;
 import java.awt.Color;
 public class Poblador extends Egiptologo
 {
-    boolean siConvencio;
+    private boolean siConvencio;
     /**
      * Este metodo es el constructor de poblador, no tiene ningun tipo de retorno.
      */ 

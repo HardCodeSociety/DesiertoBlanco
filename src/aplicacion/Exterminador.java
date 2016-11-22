@@ -9,8 +9,8 @@ import java.awt.Color;
  */
 public class Exterminador extends Egiptologo
 {
-    int elegido;
-    Elemento el;
+    private int elegido;
+    private Elemento el;
     /**
      * Este es el constructor de esta clase
      */
