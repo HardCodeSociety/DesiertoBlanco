@@ -1,12 +1,14 @@
 package aplicacion;
 import java.io.*;
+import java.util.*;
+import java.awt.*;
 
 /*NO OLVIDEN ADICIONAR LA DOCUMENTACION*/
 public class DesiertoArchivos{
-
-	public static void guarde(File f, Desierto d) throws DesiertoExcepcion{
-	    throw new DesiertoExcepcion("Guarde: "+DesiertoExcepcion.NO_CONSTRUIDO);
-	    
+	public static void guarde(File f, Desierto d) throws IOException {    	
+	    ObjectOutputStream out =new ObjectOutputStream(new FileOutputStream("f.dat"));
+		out.writeObject(d);
+		out.close();
 	}
 
 	public static Desierto abra(File f)  throws DesiertoExcepcion{

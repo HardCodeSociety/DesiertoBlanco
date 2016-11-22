@@ -2,7 +2,7 @@
 
 ### Java ###
 *.class
-
+*.dat
 # BlueJ files
 *.ctxt
 

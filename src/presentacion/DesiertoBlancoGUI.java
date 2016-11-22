@@ -32,6 +32,8 @@ public class DesiertoBlancoGUI extends JFrame{
 	
 	private JLabel etiquetaTumba;
 	private FotoDesierto foto;
+
+	private JFileChooser salvarComo;
 	
 	
 	public DesiertoBlancoGUI() {
@@ -115,11 +117,28 @@ public class DesiertoBlancoGUI extends JFrame{
 					}
 				}
 			);
+		guardar.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					guardar();
+				}
+			}
+		);
 	}
 	
 	public void reiniciar(){
 		foto.reiniciar();
 		
+	}
+	public void guardar(){
+		File archivo;
+		int i=salvarComo.showSaveDialog(this);
+		if (i == JFileChooser.APPROVE_OPTION){
+        archivo = salvarComo.getSelectedFile();
+		try{
+		DesiertoArchivos.guarde(archivo,desierto);
+		}catch(IOException e){}
+		}
 	}
 	private void elementosMenu(){
 		nuevo =  new JMenuItem("Nuevo");
@@ -140,6 +159,7 @@ public class DesiertoBlancoGUI extends JFrame{
 		archivo.add(exportar);
 		archivo.addSeparator();
 		archivo.add(salir);
+		salvarComo=new JFileChooser();
 		this.setJMenuBar(barMenu);	
 	}	
 	

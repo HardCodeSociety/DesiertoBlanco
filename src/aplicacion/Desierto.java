@@ -1,6 +1,7 @@
 package aplicacion;
 import java.util.*;
 import java.awt.*;
+import java.io.*;
 
 /**
  * @author ECI 2014
@@ -10,7 +11,7 @@ import java.awt.*;
  * @author ECI
  *
  */
-public class Desierto{
+public class Desierto implements Serializable{
     public static final int NORTE = 0;
     public static final int ESTE = 1;
     public static final int SUR = 2;

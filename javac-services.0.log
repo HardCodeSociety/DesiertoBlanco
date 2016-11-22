@@ -1,5 +1,5 @@
-SEVERE	?	main	2016-11-22T02:47:51.552Z	org.javacs.Main$4#onError	Can't find configuration file for /home/andres/Documentos/LAB06/src/aplicacion/Desierto.java
-org.javacs.NoJavaConfigException: Can't find configuration file for /home/andres/Documentos/LAB06/src/aplicacion/Desierto.java
+SEVERE	?	main	2016-11-22T19:06:31.955Z	org.javacs.Main$4#onError	Can't find configuration file for /home/andres/Documentos/LAB06/src/aplicacion/DesiertoArchivos.java
+org.javacs.NoJavaConfigException: Can't find configuration file for /home/andres/Documentos/LAB06/src/aplicacion/DesiertoArchivos.java
 	at org.javacs.JavaLanguageServer.lambda$findCompiler$21(JavaLanguageServer.java:479)
 	at java.util.Optional.orElseThrow(Optional.java:290)
 	at org.javacs.JavaLanguageServer.findCompiler(JavaLanguageServer.java:479)
@@ -19,19 +19,14 @@ org.javacs.NoJavaConfigException: Can't find configuration file for /home/andres
 	at org.javacs.Main.run(Main.java:150)
 	at org.javacs.Main.main(Main.java:69)
 
-INFO	?	main	2016-11-22T02:47:56.374Z	org.javacs.JavaLanguageServer#doLint	Lint [/home/andres/Documentos/LAB06/src/aplicacion/Desierto.java, /home/andres/Documentos/LAB06/src/presentacion/DesiertoBlancoGUI.java]
-SEVERE	?	main	2016-11-22T03:02:33.719Z	org.javacs.Main$4#onError	Can't find configuration file for /home/andres/Documentos/LAB06/src/aplicacion/Desierto.java
-org.javacs.NoJavaConfigException: Can't find configuration file for /home/andres/Documentos/LAB06/src/aplicacion/Desierto.java
+SEVERE	?	main	2016-11-22T19:06:32.455Z	org.javacs.Main$4#onError	Can't find configuration file for /home/andres/Documentos/LAB06/src/aplicacion/DesiertoArchivos.java
+org.javacs.NoJavaConfigException: Can't find configuration file for /home/andres/Documentos/LAB06/src/aplicacion/DesiertoArchivos.java
 	at org.javacs.JavaLanguageServer.lambda$findCompiler$21(JavaLanguageServer.java:479)
 	at java.util.Optional.orElseThrow(Optional.java:290)
 	at org.javacs.JavaLanguageServer.findCompiler(JavaLanguageServer.java:479)
-	at org.javacs.JavaLanguageServer.findTree(JavaLanguageServer.java:809)
-	at org.javacs.JavaLanguageServer.lambda$doHover$34(JavaLanguageServer.java:983)
-	at java.util.Optional.ifPresent(Optional.java:159)
-	at org.javacs.JavaLanguageServer.doHover(JavaLanguageServer.java:982)
-	at org.javacs.JavaLanguageServer.access$000(JavaLanguageServer.java:31)
-	at org.javacs.JavaLanguageServer$1.hover(JavaLanguageServer.java:118)
-	at io.typefox.lsapi.services.transport.server.LanguageServerEndpoint._doAccept(LanguageServerEndpoint.xtend:130)
+	at org.javacs.JavaLanguageServer.autocomplete(JavaLanguageServer.java:1057)
+	at org.javacs.JavaLanguageServer$1.completion(JavaLanguageServer.java:108)
+	at io.typefox.lsapi.services.transport.server.LanguageServerEndpoint._doAccept(LanguageServerEndpoint.xtend:126)
 	at io.typefox.lsapi.services.transport.server.LanguageServerEndpoint.doAccept(LanguageServerEndpoint.xtend:117)
 	at io.typefox.lsapi.services.transport.server.LanguageServerEndpoint.accept(LanguageServerEndpoint.xtend:114)
 	at io.typefox.lsapi.services.transport.server.LanguageServerEndpoint.accept(LanguageServerEndpoint.xtend)
@@ -45,54 +40,3 @@ org.javacs.NoJavaConfigException: Can't find configuration file for /home/andres
 	at org.javacs.Main.run(Main.java:150)
 	at org.javacs.Main.main(Main.java:69)
 
-SEVERE	?	main	2016-11-22T03:02:33.956Z	org.javacs.Main$4#onError	Can't find configuration file for /home/andres/Documentos/LAB06/src/aplicacion/Desierto.java
-org.javacs.NoJavaConfigException: Can't find configuration file for /home/andres/Documentos/LAB06/src/aplicacion/Desierto.java
-	at org.javacs.JavaLanguageServer.lambda$findCompiler$21(JavaLanguageServer.java:479)
-	at java.util.Optional.orElseThrow(Optional.java:290)
-	at org.javacs.JavaLanguageServer.findCompiler(JavaLanguageServer.java:479)
-	at org.javacs.JavaLanguageServer.findTree(JavaLanguageServer.java:809)
-	at org.javacs.JavaLanguageServer.lambda$doHover$34(JavaLanguageServer.java:983)
-	at java.util.Optional.ifPresent(Optional.java:159)
-	at org.javacs.JavaLanguageServer.doHover(JavaLanguageServer.java:982)
-	at org.javacs.JavaLanguageServer.access$000(JavaLanguageServer.java:31)
-	at org.javacs.JavaLanguageServer$1.hover(JavaLanguageServer.java:118)
-	at io.typefox.lsapi.services.transport.server.LanguageServerEndpoint._doAccept(LanguageServerEndpoint.xtend:130)
-	at io.typefox.lsapi.services.transport.server.LanguageServerEndpoint.doAccept(LanguageServerEndpoint.xtend:117)
-	at io.typefox.lsapi.services.transport.server.LanguageServerEndpoint.accept(LanguageServerEndpoint.xtend:114)
-	at io.typefox.lsapi.services.transport.server.LanguageServerEndpoint.accept(LanguageServerEndpoint.xtend)
-	at io.typefox.lsapi.services.transport.AbstractLanguageEndpoint.handleMessage(LanguageEndpoint.xtend:67)
-	at io.typefox.lsapi.services.transport.AbstractLanguageEndpoint.lambda$connect$4(LanguageEndpoint.xtend:61)
-	at io.typefox.lsapi.services.json.StreamMessageReader$1.apply(StreamMessageReader.java:46)
-	at io.typefox.lsapi.services.json.StreamMessageReader$1.apply(StreamMessageReader.java:44)
-	at io.typefox.lsapi.services.json.StreamMessageReader.handleMessage(StreamMessageReader.xtend:128)
-	at io.typefox.lsapi.services.json.StreamMessageReader.listen(StreamMessageReader.xtend:61)
-	at io.typefox.lsapi.services.transport.AbstractLanguageEndpoint.connect(LanguageEndpoint.xtend:60)
-	at org.javacs.Main.run(Main.java:150)
-	at org.javacs.Main.main(Main.java:69)
-
-SEVERE	?	main	2016-11-22T03:03:20.176Z	org.javacs.Main$4#onError	Can't find configuration file for /home/andres/Documentos/LAB06/src/aplicacion/Desierto.java
-org.javacs.NoJavaConfigException: Can't find configuration file for /home/andres/Documentos/LAB06/src/aplicacion/Desierto.java
-	at org.javacs.JavaLanguageServer.lambda$findCompiler$21(JavaLanguageServer.java:479)
-	at java.util.Optional.orElseThrow(Optional.java:290)
-	at org.javacs.JavaLanguageServer.findCompiler(JavaLanguageServer.java:479)
-	at org.javacs.JavaLanguageServer.findTree(JavaLanguageServer.java:809)
-	at org.javacs.JavaLanguageServer.lambda$doHover$34(JavaLanguageServer.java:983)
-	at java.util.Optional.ifPresent(Optional.java:159)
-	at org.javacs.JavaLanguageServer.doHover(JavaLanguageServer.java:982)
-	at org.javacs.JavaLanguageServer.access$000(JavaLanguageServer.java:31)
-	at org.javacs.JavaLanguageServer$1.hover(JavaLanguageServer.java:118)
-	at io.typefox.lsapi.services.transport.server.LanguageServerEndpoint._doAccept(LanguageServerEndpoint.xtend:130)
-	at io.typefox.lsapi.services.transport.server.LanguageServerEndpoint.doAccept(LanguageServerEndpoint.xtend:117)
-	at io.typefox.lsapi.services.transport.server.LanguageServerEndpoint.accept(LanguageServerEndpoint.xtend:114)
-	at io.typefox.lsapi.services.transport.server.LanguageServerEndpoint.accept(LanguageServerEndpoint.xtend)
-	at io.typefox.lsapi.services.transport.AbstractLanguageEndpoint.handleMessage(LanguageEndpoint.xtend:67)
-	at io.typefox.lsapi.services.transport.AbstractLanguageEndpoint.lambda$connect$4(LanguageEndpoint.xtend:61)
-	at io.typefox.lsapi.services.json.StreamMessageReader$1.apply(StreamMessageReader.java:46)
-	at io.typefox.lsapi.services.json.StreamMessageReader$1.apply(StreamMessageReader.java:44)
-	at io.typefox.lsapi.services.json.StreamMessageReader.handleMessage(StreamMessageReader.xtend:128)
-	at io.typefox.lsapi.services.json.StreamMessageReader.listen(StreamMessageReader.xtend:61)
-	at io.typefox.lsapi.services.transport.AbstractLanguageEndpoint.connect(LanguageEndpoint.xtend:60)
-	at org.javacs.Main.run(Main.java:150)
-	at org.javacs.Main.main(Main.java:69)
-
-INFO	?	main	2016-11-22T03:10:04.898Z	org.javacs.JavaLanguageServer#doLint	Lint [/home/andres/Documentos/LAB06/src/aplicacion/Desierto.java, /home/andres/Documentos/LAB06/src/presentacion/DesiertoBlancoGUI.java]
