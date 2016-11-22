@@ -208,7 +208,9 @@ public class Desierto{
     }
   }
   public  void reiniciar(){
-	  desierto= null;
+	  elementos.clear();
+      algunosElementos();
+
 	  
   }
 }
