@@ -1,5 +1,6 @@
 package aplicacion;
 import java.awt.Color;
+import java.io.*;
 
 /**
  * Write a description of class Oasis here.
@@ -7,7 +8,7 @@ import java.awt.Color;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Oasis implements Elemento{
+public class Oasis implements Elemento,Serializable{
     private boolean isClaro;
     private Desierto desierto; 
     private Color color;    

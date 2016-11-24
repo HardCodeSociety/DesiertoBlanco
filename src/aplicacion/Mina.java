@@ -1,13 +1,14 @@
 package aplicacion;
 import java.awt.Color;
 import java.util.*;
+import java.io.*;
 /**
  * Write a description of class Mina here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Mina implements Elemento
+public class Mina implements Elemento,Serializable
 {
     private Desierto desierto;
     private Color color;

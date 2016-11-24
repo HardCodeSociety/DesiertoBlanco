@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.lang.Thread;
 import java.io.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 
 import aplicacion.*;
@@ -33,7 +34,7 @@ public class DesiertoBlancoGUI extends JFrame{
 	private JLabel etiquetaTumba;
 	private FotoDesierto foto;
 
-	private JFileChooser salvarComo;
+	private JFileChooser escoger;
 	
 	
 	public DesiertoBlancoGUI() {
@@ -124,6 +125,13 @@ public class DesiertoBlancoGUI extends JFrame{
 				}
 			}
 		);
+		abrir.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					abrir();					
+				}
+			}
+		);
 	}
 	
 	public void reiniciar(){
@@ -132,14 +140,27 @@ public class DesiertoBlancoGUI extends JFrame{
 	}
 	public void guardar(){
 		File archivo;
-		int i=salvarComo.showSaveDialog(this);
+		int i=escoger.showSaveDialog(this);
 		if (i == JFileChooser.APPROVE_OPTION){
-        	archivo = salvarComo.getSelectedFile();
-			archivo.renameTo(new File(archivo.getPath()+".dat"));
+        	archivo = escoger.getSelectedFile();
+			int caracteres=archivo.getName.length()
+			if(archivo.getName().substring())
 			try{
 				DesiertoArchivos.guarde(archivo,desierto);
-			}catch(IOException e){}
+			}catch(DesiertoExcepcion e){}
 		}
+	}
+	public void abrir(){
+		File archivo;
+		int i=escoger.showOpenDialog(this);
+		if (i==JFileChooser.APPROVE_OPTION){
+			archivo = escoger.getSelectedFile();
+			try{
+				desierto.cambieDesierto(DesiertoArchivos.abra(archivo));
+			}catch(IOException e){}
+			catch(ClassNotFoundException e){}
+		}
+		actualice();
 	}
 	private void elementosMenu(){
 		nuevo =  new JMenuItem("Nuevo");
@@ -160,8 +181,9 @@ public class DesiertoBlancoGUI extends JFrame{
 		archivo.add(exportar);
 		archivo.addSeparator();
 		archivo.add(salir);
-		salvarComo=new JFileChooser();
-		salvarComo.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+		escoger=new JFileChooser();
+		FileNameExtensionFilter filtro = new FileNameExtensionFilter("*.DAT", "dat");
+		escoger.setFileFilter(filtro);
 		this.setJMenuBar(barMenu);	
 	}	
 	
@@ -240,6 +262,8 @@ public class DesiertoBlancoGUI extends JFrame{
 			for (int i=1; i<=desierto.numeroElementos(); i++) {
 				
 				Elemento e=desierto.demeElemento(i);
+				//System.out.println(e.getPosY());
+				//System.out.println(e.getPosX());
 				int x=e.getPosX();
 				int y=MAX-e.getPosY();	
 				

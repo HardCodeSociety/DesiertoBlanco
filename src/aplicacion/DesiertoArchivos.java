@@ -5,15 +5,21 @@ import java.awt.*;
 
 /*NO OLVIDEN ADICIONAR LA DOCUMENTACION*/
 public class DesiertoArchivos{
-	public static void guarde(File f, Desierto d) throws IOException { 
-	    ObjectOutputStream out =new ObjectOutputStream(new FileOutputStream(f));
-		out.writeObject(d);
-		out.close();
+	public static void guarde(File f, Desierto d) throws DesiertoExcepcion {
+		try{ 
+	    	ObjectOutputStream out =new ObjectOutputStream(new FileOutputStream(f));
+			out.writeObject(d);
+			out.close();
+		}catch(IOException e){
+			throw new DesiertoExcepcion(DesiertoExcepcion.ERROR);  
+		}
 	}
 
-	public static Desierto abra(File f)  throws DesiertoExcepcion{
-	    if (true) throw new DesiertoExcepcion("Abra: "+DesiertoExcepcion.NO_CONSTRUIDO);
-		return null;
+	public static Desierto abra(File f)  throws IOException, ClassNotFoundException{
+		ObjectInputStream in =new ObjectInputStream(new FileInputStream(f));
+		Desierto desiertoGuardado=(Desierto) in.readObject();
+		in.close();
+		return desiertoGuardado;
 	}
 	
 	public static void exporte(File f, Desierto d) throws DesiertoExcepcion{

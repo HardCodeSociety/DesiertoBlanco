@@ -1,7 +1,7 @@
 package aplicacion;
 import java.awt.Color;
 
-public interface Elemento{
+public interface Elemento {
     int getPosX();
     int getPosY();
     boolean esHumano();

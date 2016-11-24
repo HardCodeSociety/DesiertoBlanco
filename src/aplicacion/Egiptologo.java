@@ -1,8 +1,9 @@
 package aplicacion;
 
 import java.awt.Color;
+import java.io.*;
 
-public class Egiptologo implements Elemento{
+public class Egiptologo implements Elemento,Serializable{
     
     
     

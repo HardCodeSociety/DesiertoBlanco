@@ -75,7 +75,7 @@ public class Desierto implements Serializable{
         elementos.add(new Poblador(this,"felipito",150,480));
         elementos.add(new Minucioso(this,"harry"));
         elementos.add(new Exterminador(this,"Arnold",40,400));
-        //elementos.add(new Exterminador(this,"Rambo",400,100));
+        elementos.add(new Exterminador(this,"Rambo",400,100));
         elementos.add(new Mina(this,350,250));
     }  
     /**
