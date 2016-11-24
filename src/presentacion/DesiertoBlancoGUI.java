@@ -134,10 +134,11 @@ public class DesiertoBlancoGUI extends JFrame{
 		File archivo;
 		int i=salvarComo.showSaveDialog(this);
 		if (i == JFileChooser.APPROVE_OPTION){
-        archivo = salvarComo.getSelectedFile();
-		try{
-		DesiertoArchivos.guarde(archivo,desierto);
-		}catch(IOException e){}
+        	archivo = salvarComo.getSelectedFile();
+			archivo.renameTo(new File(archivo.getPath()+".dat"));
+			try{
+				DesiertoArchivos.guarde(archivo,desierto);
+			}catch(IOException e){}
 		}
 	}
 	private void elementosMenu(){
@@ -160,6 +161,7 @@ public class DesiertoBlancoGUI extends JFrame{
 		archivo.addSeparator();
 		archivo.add(salir);
 		salvarComo=new JFileChooser();
+		salvarComo.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 		this.setJMenuBar(barMenu);	
 	}	
 	

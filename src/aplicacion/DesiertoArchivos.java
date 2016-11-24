@@ -5,8 +5,8 @@ import java.awt.*;
 
 /*NO OLVIDEN ADICIONAR LA DOCUMENTACION*/
 public class DesiertoArchivos{
-	public static void guarde(File f, Desierto d) throws IOException {    	
-	    ObjectOutputStream out =new ObjectOutputStream(new FileOutputStream("f.dat"));
+	public static void guarde(File f, Desierto d) throws IOException { 
+	    ObjectOutputStream out =new ObjectOutputStream(new FileOutputStream(f));
 		out.writeObject(d);
 		out.close();
 	}
