@@ -15,11 +15,17 @@ public class DesiertoArchivos{
 		}
 	}
 
-	public static Desierto abra(File f)  throws IOException, ClassNotFoundException{
-		ObjectInputStream in =new ObjectInputStream(new FileInputStream(f));
-		Desierto desiertoGuardado=(Desierto) in.readObject();
-		in.close();
-		return desiertoGuardado;
+	public static Desierto abra(File f) throws DesiertoExcepcion{
+		try{
+			ObjectInputStream in =new ObjectInputStream(new FileInputStream(f));
+			Desierto desiertoGuardado=(Desierto) in.readObject();
+			in.close();
+			return desiertoGuardado;
+		}catch(IOException e){
+			throw new DesiertoExcepcion(DesiertoExcepcion.ERROR); 
+		}catch(ClassNotFoundException e){
+			throw new DesiertoExcepcion(DesiertoExcepcion.ERROR); 
+		}
 	}
 	
 	public static void exporte(File f, Desierto d) throws DesiertoExcepcion{

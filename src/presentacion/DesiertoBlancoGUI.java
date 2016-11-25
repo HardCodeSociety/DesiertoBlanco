@@ -143,11 +143,14 @@ public class DesiertoBlancoGUI extends JFrame{
 		int i=escoger.showSaveDialog(this);
 		if (i == JFileChooser.APPROVE_OPTION){
         	archivo = escoger.getSelectedFile();
-			int caracteres=archivo.getName.length()
-			if(archivo.getName().substring())
-			try{
-				DesiertoArchivos.guarde(archivo,desierto);
-			}catch(DesiertoExcepcion e){}
+			int caracteres=archivo.getName().length();
+			if(archivo.getName().substring(caracteres-4,caracteres).equals(".dat")){
+				try{
+					DesiertoArchivos.guarde(archivo,desierto);
+				}catch(DesiertoExcepcion e){}
+			}else {
+				JOptionPane.showMessageDialog(null,"El archivo debe tener la extención .dat");
+			}
 		}
 	}
 	public void abrir(){
@@ -155,10 +158,12 @@ public class DesiertoBlancoGUI extends JFrame{
 		int i=escoger.showOpenDialog(this);
 		if (i==JFileChooser.APPROVE_OPTION){
 			archivo = escoger.getSelectedFile();
+			int caracteres=archivo.getName().length();
 			try{
 				desierto.cambieDesierto(DesiertoArchivos.abra(archivo));
-			}catch(IOException e){}
-			catch(ClassNotFoundException e){}
+				desierto=Desierto.demeDesierto();
+			}catch(DesiertoExcepcion e){}
+			
 		}
 		actualice();
 	}
@@ -279,8 +284,7 @@ public class DesiertoBlancoGUI extends JFrame{
 			}
 			super.paintComponent(g);
 		}
-		
-		
+	
 		public void humano(Graphics g, Elemento e,int x, int y){
 			int pos;
 			g.setColor(Color.PINK);

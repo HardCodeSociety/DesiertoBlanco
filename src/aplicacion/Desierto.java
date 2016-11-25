@@ -66,17 +66,17 @@ public class Desierto implements Serializable{
     public void algunosElementos(){    
         elementos.add(new Egiptologo(this,"Yasay",200,200));
         elementos.add(new Egiptologo(this,"indiana",300,300));
-        elementos.add(new Egiptologo(this,"agente007",100,100));
-        elementos.add(new Rebelde(this,"homer",30,30));
-        elementos.add(new Rebelde(this,"bard",400,40));
-        elementos.add(new Oasis(this,0,0));
-        elementos.add(new Oasis(this,500,500));
-        elementos.add(new Poblador(this,"susanita",150,80));
-        elementos.add(new Poblador(this,"felipito",150,480));
-        elementos.add(new Minucioso(this,"harry"));
-        elementos.add(new Exterminador(this,"Arnold",40,400));
-        elementos.add(new Exterminador(this,"Rambo",400,100));
-        elementos.add(new Mina(this,350,250));
+        //elementos.add(new Egiptologo(this,"agente007",100,100));
+        //elementos.add(new Rebelde(this,"homer",30,30));
+        //elementos.add(new Rebelde(this,"bard",400,40));
+        //elementos.add(new Oasis(this,0,0));
+        //elementos.add(new Oasis(this,500,500));
+        //elementos.add(new Poblador(this,"susanita",150,80));
+        //elementos.add(new Poblador(this,"felipito",150,480));
+        //elementos.add(new Minucioso(this,"harry"));
+        //elementos.add(new Exterminador(this,"Arnold",40,400));
+        //elementos.add(new Exterminador(this,"Rambo",400,100));
+        //elementos.add(new Mina(this,350,250));
     }  
     /**
      * @return retorna un booleano el cual nos dice si encontraron la tumba
