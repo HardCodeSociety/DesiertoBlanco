@@ -11,7 +11,7 @@ public class DesiertoArchivos{
 			out.writeObject(d);
 			out.close();
 		}catch(IOException e){
-			throw new DesiertoExcepcion(DesiertoExcepcion.ERROR);  
+			throw new DesiertoExcepcion(DesiertoExcepcion.ERROR_IO);  
 		}
 	}
 
@@ -22,9 +22,9 @@ public class DesiertoArchivos{
 			in.close();
 			return desiertoGuardado;
 		}catch(IOException e){
-			throw new DesiertoExcepcion(DesiertoExcepcion.ERROR); 
+			throw new DesiertoExcepcion(DesiertoExcepcion.ERROR_IO); 
 		}catch(ClassNotFoundException e){
-			throw new DesiertoExcepcion(DesiertoExcepcion.ERROR); 
+			throw new DesiertoExcepcion(DesiertoExcepcion.ERROR_CLASE); 
 		}
 	}
 	

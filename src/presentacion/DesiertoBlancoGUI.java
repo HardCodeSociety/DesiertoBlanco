@@ -147,9 +147,11 @@ public class DesiertoBlancoGUI extends JFrame{
 			if(archivo.getName().substring(caracteres-4,caracteres).equals(".dat")){
 				try{
 					DesiertoArchivos.guarde(archivo,desierto);
-				}catch(DesiertoExcepcion e){}
+				}catch(DesiertoExcepcion e){
+					JOptionPane.showMessageDialog(null,"NO SE PUDO GUARDAR EN ESTE ARCHIVO");	
+				}
 			}else {
-				JOptionPane.showMessageDialog(null,"El archivo debe tener la extención .dat");
+				JOptionPane.showMessageDialog(null,"La extencion debe ser .dat");
 			}
 		}
 	}
@@ -162,7 +164,9 @@ public class DesiertoBlancoGUI extends JFrame{
 			try{
 				desierto.cambieDesierto(DesiertoArchivos.abra(archivo));
 				desierto=Desierto.demeDesierto();
-			}catch(DesiertoExcepcion e){}
+			}catch(DesiertoExcepcion e){
+				JOptionPane.showMessageDialog(null,"NO SE PUEDE ABRIR EL ARCHIVO");	
+			}
 			
 		}
 		actualice();
