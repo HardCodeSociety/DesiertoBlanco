@@ -12,7 +12,7 @@ import aplicacion.*;
 
 
 public class DesiertoBlancoGUI extends JFrame{
-	
+
 	private Desierto desierto=null;
 	private JMenuBar barMenu;
 	private JMenuItem abrir;
@@ -22,25 +22,26 @@ public class DesiertoBlancoGUI extends JFrame{
 	private JMenuItem salir;
 	private JMenuItem nuevo;
 	private JMenu archivo;
-	
+
 	private JPanel botones;
 	private JScrollPane contenedor;
 	private JButton botonMoverTodos;
 	private JButton botonMoverUno;
 	private JCheckBox checkAPrisa;
-	
+
 	private JTextField textNumBuscador;
-	
+
 	private JLabel etiquetaTumba;
 	private FotoDesierto foto;
 
 	private JFileChooser escoger;
-	
-	
+	private JFileChooser escogerIE;
+
+
 	public DesiertoBlancoGUI() {
 		super("DESIERTO BLANCO");
 		try {
-			desierto=Desierto.demeDesierto();    	
+			desierto=Desierto.demeDesierto();
 			desierto.algunosElementos();
 			elementos();
 			acciones();
@@ -48,18 +49,18 @@ public class DesiertoBlancoGUI extends JFrame{
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void elementos() throws Exception {
-		
+
 		foto= new FotoDesierto();
 		getContentPane().setLayout(new BorderLayout());
-		
+
 		contenedor = new JScrollPane();
-		
+
 		foto=new FotoDesierto();
-		
+
 		contenedor.getViewport().add(foto);
-		
+
 		botones=new JPanel(new GridLayout(1,3));
 		checkAPrisa=new JCheckBox("Aprisa");
 		botonMoverTodos=new JButton("Mover todos");
@@ -68,41 +69,41 @@ public class DesiertoBlancoGUI extends JFrame{
 		textNumBuscador= new JTextField("  1");
 		mini.add(botonMoverUno);
 		mini.add(textNumBuscador);
-		
+
 		botones.add(checkAPrisa);
 		botones.add(botonMoverTodos);
 		botones.add(mini);
-		
+
 		getContentPane().add(contenedor,BorderLayout.CENTER);
 		getContentPane().add(botones,BorderLayout.SOUTH);
-		
+
 		elementosMenu();
 		pack();
 		setSize(Desierto.MAXIMO+100,Desierto.MAXIMO+135);
 		setResizable(false);
 	}
-	
-	
+
+
 	private void acciones(){
 		ActionListener oyenteBotonMoverTodos=new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				moverTodos();
-			}	
-		};	
+			}
+		};
 		botonMoverTodos.addActionListener(oyenteBotonMoverTodos);
-		
+
 		ActionListener oyenteBotonMoverUno=new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				moverUno();
-			}	
-		};	
+			}
+		};
 		botonMoverUno.addActionListener(oyenteBotonMoverUno);
-		
-		WindowListener w = new WindowAdapter() { 
+
+		WindowListener w = new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				salir();
 			}
-		};  
+		};
 		this.addWindowListener(w);
 		nuevo.addActionListener(
 			new ActionListener(){
@@ -128,15 +129,62 @@ public class DesiertoBlancoGUI extends JFrame{
 		abrir.addActionListener(
 			new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					abrir();					
+					abrir();
+				}
+			}
+		);
+		exportar.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					exportar();
+				}
+			}
+		);
+		importar.addActionListener(
+			new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					importar();
 				}
 			}
 		);
 	}
-	
+
 	public void reiniciar(){
 		foto.reiniciar();
-		
+
+	}
+	public void importar(){
+		File archivo;
+		int i=escogerIE.showOpenDialog(this);
+		if (i==JFileChooser.APPROVE_OPTION){
+			archivo = escogerIE.getSelectedFile();
+			try{
+				desierto.eliminarElementos();
+				DesiertoArchivos.importe(archivo);
+				desierto=Desierto.demeDesierto();
+			}catch(DesiertoExcepcion e){
+				JOptionPane.showMessageDialog(null,"NO SE PUEDE ABRIR EL ARCHIVO");	
+			}
+		}
+		actualice();
+	}
+
+	public void exportar(){
+		File archivo;
+		int i=escogerIE.showSaveDialog(this);
+		if (i == JFileChooser.APPROVE_OPTION){
+        	archivo = escogerIE.getSelectedFile();
+			int caracteres=archivo.getName().length();
+			if(archivo.getName().substring(caracteres-4,caracteres).equals(".txt")){
+				try{
+					DesiertoArchivos.exporte(archivo,desierto);
+				}catch(DesiertoExcepcion e){
+					JOptionPane.showMessageDialog(null,"NO SE PUDO GUARDAR EN ESTE ARCHIVO");	
+				}
+			}else {
+				JOptionPane.showMessageDialog(null,"La extencion debe ser .txt");
+			}
+		}
 	}
 	public void guardar(){
 		File archivo;
@@ -160,14 +208,12 @@ public class DesiertoBlancoGUI extends JFrame{
 		int i=escoger.showOpenDialog(this);
 		if (i==JFileChooser.APPROVE_OPTION){
 			archivo = escoger.getSelectedFile();
-			int caracteres=archivo.getName().length();
 			try{
 				desierto.cambieDesierto(DesiertoArchivos.abra(archivo));
 				desierto=Desierto.demeDesierto();
 			}catch(DesiertoExcepcion e){
 				JOptionPane.showMessageDialog(null,"NO SE PUEDE ABRIR EL ARCHIVO");	
 			}
-			
 		}
 		actualice();
 	}
@@ -193,10 +239,13 @@ public class DesiertoBlancoGUI extends JFrame{
 		escoger=new JFileChooser();
 		FileNameExtensionFilter filtro = new FileNameExtensionFilter("*.DAT", "dat");
 		escoger.setFileFilter(filtro);
-		this.setJMenuBar(barMenu);	
-	}	
-	
-	
+		escogerIE=new JFileChooser();
+		filtro =new FileNameExtensionFilter("*.TXT","txt");
+		escogerIE.setFileFilter(filtro);
+		this.setJMenuBar(barMenu);
+	}
+
+
 	private void moverTodos(){
 		try{
 			int veces=(checkAPrisa.isSelected()?100:1);
@@ -205,10 +254,10 @@ public class DesiertoBlancoGUI extends JFrame{
 				actualice();
 			}
 		}catch(Exception e){
-		}	   
+		}
 	}
-	
-	
+
+
 	private void moverUno(){
 		try {
 			int nb = Integer.parseInt(textNumBuscador.getText().trim());
@@ -220,39 +269,39 @@ public class DesiertoBlancoGUI extends JFrame{
 				}
 			}else{
 				JOptionPane.showMessageDialog(this,"Error");
-			}                
+			}
 		}catch(Exception e){
 			JOptionPane.showMessageDialog(this,"Error");
-			
+
 		}
-	}    	
-	
+	}
+
 	private void actualice(){
 		foto.actualice();
 	}
-	
-	
-	
+
+
+
 	private void salir(){
 		dispose();
 		System.exit(0);
-	}	
-	
-	
-	
+	}
+
+
+
 	public static void main(String[] args) {
 		DesiertoBlancoGUI gui=new DesiertoBlancoGUI();
 		gui.setVisible(true);
-	}   
+	}
 	//Clase FotoDesierto
-	
-	
+
+
 	class FotoDesierto extends JComponent {
 		int x,y;
 		Desierto desierto = Desierto.demeDesierto();
-		
+
 		private static final int MAX=Desierto.MAXIMO;
-		
+
 		private FotoDesierto() {
 		}
 
@@ -264,40 +313,38 @@ public class DesiertoBlancoGUI extends JFrame{
 			desierto.reiniciar();
 			actualice();
 		}
-		
+
 		public void paintComponent(Graphics g){
-			g.setFont(new Font("TimesRoman", Font.PLAIN, 8)); 
-			
+			g.setFont(new Font("TimesRoman", Font.PLAIN, 8));
+
 			for (int i=1; i<=desierto.numeroElementos(); i++) {
-				
+
 				Elemento e=desierto.demeElemento(i);
-				//System.out.println(e.getPosY());
-				//System.out.println(e.getPosX());
 				int x=e.getPosX();
-				int y=MAX-e.getPosY();	
-				
-				g.setColor(e.getColor()); 
-				g.drawString(e.mensaje(),x+20,y+10);   
-				
+				int y=MAX-e.getPosY();
+
+				g.setColor(e.getColor());
+				g.drawString(e.mensaje(),x+20,y+10);
+
 				if (! e.esHumano()){
 					g.fillOval(x+20,y+0,20,20);
 				} else {
 					humano(g,e,x,y);
 				}
-				
+
 			}
 			super.paintComponent(g);
 		}
-	
+
 		public void humano(Graphics g, Elemento e,int x, int y){
 			int pos;
 			g.setColor(Color.PINK);
 			g.fillOval(x+10,y+0,10,10);/*cabeza*/
-			g.setColor(e.getColor()); 
+			g.setColor(e.getColor());
 			g.drawLine(x+10+5,y+10,x+10+5,y+10+20);
-			
+
 			pos=(int)(Math.random()*3);
-			
+
 			if (pos==0){
 				g.drawLine(x+10+5,y+10+5,x+10+15,y+10);/*brazo izq arriba*/
 			} else if (pos==1){
@@ -305,7 +352,7 @@ public class DesiertoBlancoGUI extends JFrame{
 			} else {
 				g.drawLine(x+10+5,y+10+5,x+10+15,y+10+10);/*brazo izq abajo*/
 			}
-			
+
 			pos=(int)(Math.random()*3);
 			if (pos==0){
 				g.drawLine(x+10+5,y+10+5,x+5,y+10);/*brazo der arriba*/
@@ -314,10 +361,10 @@ public class DesiertoBlancoGUI extends JFrame{
 			} else{
 				g.drawLine(x+10+5,y+10+5,x+5,y+10+10);/*brazo der abajo*/
 			}
-			
+
 			g.drawLine(x+10+5,(y+15)+10+5,x+10+15,(y+15)+10+15);/*pierna izq abajo*/
 			g.drawLine(x+10+5,(y+15)+10+5,x+5,(y+15)+10+15);/*pierna der abajo*/
-			
+
 			pos=(int)(Math.random()*3);
 			if (pos==0){
 				g.drawLine(x+5,(y+15)+10+15,x+5+10,(y+15)+10+15);/*pierna der arriba*/
@@ -326,7 +373,7 @@ public class DesiertoBlancoGUI extends JFrame{
 			} else{
 				g.drawLine(x+5,(y+15)+10+15,x+5,(y+15)+10+15+10);/*pierna der abajo*/
 			}
-			
+
 			pos=(int)(Math.random()*3);
 			if (pos==0){
 				g.drawLine(x+10+15,(y+15)+10+15,x+10+15-10,(y+15)+10+15);/*pierna izq arriba*/
@@ -338,8 +385,3 @@ public class DesiertoBlancoGUI extends JFrame{
 		}
 	}
 }
-
-
-
-
-

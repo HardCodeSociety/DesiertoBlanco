@@ -58,8 +58,10 @@ public class Desierto implements Serializable{
         tumbaPosY = (int)(Math.random() * MAXIMO);
         encontraronTumba=false;
     }
-    
-    
+
+    public void agregarElemento(Elemento elemento){
+        elementos.add(elemento);
+    }
     /**
      * Este metodo nos permite agregar personas a el desierto
      */
@@ -212,5 +214,8 @@ public class Desierto implements Serializable{
   public  void reiniciar(){
 	elementos.clear();
       algunosElementos();
+  }
+  public void eliminarElementos(){
+      elementos.clear();
   }
 }
